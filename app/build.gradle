@@ -1,0 +1,64 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "com.example.myapplication"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+final ANDROID_SUPPORT_VERSION = '26.+'
+final BUTTERKNIFE_VERSION = '8.8.1'
+
+final RX_JAVA_VERSION = '1.1.7'
+final RX_ANDROID_VERSION = '1.2.1'
+final GSON_VERSION = '2.4'
+final RETROFIT_VERSION = '2.1.0'
+final RETROFIT_CONVERTER_GSON_VERSION = '2.1.0'
+final RETROFIT_ADAPTER_VERSION = '2.1.0'
+final OK_HTTP_VERSION = '3.3.1'
+
+dependencies {
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile "com.android.support:appcompat-v7:${ANDROID_SUPPORT_VERSION}"
+    compile "com.android.support:support-v4:${ANDROID_SUPPORT_VERSION}"
+
+    compile "com.jakewharton:butterknife:${BUTTERKNIFE_VERSION}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${BUTTERKNIFE_VERSION}"
+
+    compile "com.google.code.gson:gson:${GSON_VERSION}"
+    compile "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
+    compile "com.squareup.retrofit2:converter-gson:${RETROFIT_CONVERTER_GSON_VERSION}"
+    compile "com.squareup.retrofit2:adapter-rxjava:${RETROFIT_ADAPTER_VERSION}"
+    compile "com.squareup.okhttp3:okhttp:${OK_HTTP_VERSION}"
+    compile "com.squareup.okhttp3:logging-interceptor:${OK_HTTP_VERSION}"
+    compile "io.reactivex:rxjava:${RX_JAVA_VERSION}"
+    compile "io.reactivex:rxandroid:${RX_ANDROID_VERSION}"
+    compile "com.google.code.gson:gson:${GSON_VERSION}"
+
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+}

@@ -1,0 +1,11 @@
+<resources>
+  <string name="app_name">My Application</string>
+  <string name="enter_email">Ingrese su dirección de correo</string>
+  <string name="submit">Enviar</string>
+
+  <array name="swipe_refresh_colors">
+    <item>@color/colorPrimary</item>
+    <item>@color/colorAccent</item>
+    <item>@color/colorPrimaryDark</item>
+  </array>
+</resources>
