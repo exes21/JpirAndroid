@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
   }
 
   public void callHttp() {
-    presenter.loadResponse(email, "192.168.0.1");
+    presenter.loadResponse(email, "192.168.0.183");
   }
 
   private void setupSwipeRefreshLayout() {

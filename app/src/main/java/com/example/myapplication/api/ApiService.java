@@ -8,10 +8,10 @@ import rx.Observable;
 
 public interface ApiService {
 
-  @GET("api/data_colector/create?")
+  @GET("api/data_colector/create")
   Observable<JsonObject> getData(
       @Query("email") String email,
       @Query("ping") String ping,
       @Query("sign_level") Integer signLevel,
-      @Query("link_speed") Integer link_speed);
+      @Query("link_speed") Integer linkSpeed);
 }
