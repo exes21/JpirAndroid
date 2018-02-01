@@ -11,14 +11,11 @@ import android.widget.Toast;
 
 public class ServicerRun extends Service
 {
-  //  private MainActivity activity;
 
 
 
 
-   /* public ServicerRun(MainActivity activity) {
-        this.activity = activity;
-    }*/
+
 
 
 

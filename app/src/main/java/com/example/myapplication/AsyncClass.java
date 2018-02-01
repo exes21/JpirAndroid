@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -14,11 +15,12 @@ public class AsyncClass {
     private Boolean cancelar = false;
     private Context contexto;
     private Presenter presenter;
-
+    private Clase c;
 
 
     public AsyncClass(Context contexto) {
         this.contexto = contexto;
+        c = new Clase(MainActivity.mainActivity);
     }
 
 
@@ -32,6 +34,7 @@ public class AsyncClass {
 
     public void ejecutar(){
         Tiempo a = new Tiempo();
+        c.iniciar();
         a.execute();
 
     }

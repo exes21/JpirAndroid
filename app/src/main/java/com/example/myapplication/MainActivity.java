@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
 
   private String email;
   private String ip;
+  private Clase c;
+  private ServicerRun servicio;
+  private Context thisContext = this;
+  public static MainActivity mainActivity;
 
  @BindView(R.id.swipe_refresh_layout)
   SwipeRefreshLayout swipeRefreshLayout;
@@ -40,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     ButterKnife.bind(this);
     setupPresenter();
     setupSwipeRefreshLayout();
+    mainActivity = MainActivity.this;
+
   }
 
   @OnClick(R.id.button_submit)
@@ -47,16 +55,20 @@ public class MainActivity extends AppCompatActivity {
     email = emailText.getText().toString();
     ip =ipText.getText().toString();
 
+
+
     if (email.isEmpty())
       Toast.makeText(this, R.string.enter_email, Toast.LENGTH_LONG).show();
     else {
-      Thread thread = new Thread(() -> {
-        callHttp();
-        runOnUiThread(() -> setProgressIndicator(true));
-      });
-      thread.start();
+        startService(new Intent(thisContext, ServicerRun.class) );
+
     }
   }
+
+    @OnClick(R.id.IDstop)
+    public void onClickStopButton() {
+        stopService(new Intent(thisContext, ServicerRun.class) );
+    }
 
   private void setupPresenter() {
     presenter = new Presenter(this);
@@ -71,12 +83,12 @@ public class MainActivity extends AppCompatActivity {
     swipeRefreshLayout.setOnRefreshListener(this::callHttp);
   }
 
-  public void setProgressIndicator(final boolean active) {
-    swipeRefreshLayout.post(() -> {
-      if (swipeRefreshLayout != null)
-        swipeRefreshLayout.setRefreshing(active);
-    });
-  }
+    public void setProgressIndicator(final boolean active) {
+        swipeRefreshLayout.post(() -> {
+            if (swipeRefreshLayout != null)
+                swipeRefreshLayout.setRefreshing(active);
+        });
+    }
 
   public void showResponse(String response) {
     responseTextView.setText(response);
