@@ -19,12 +19,16 @@ public class MainActivity extends AppCompatActivity {
   private Presenter presenter;
 
   private String email;
+  private String ip;
 
-  @BindView(R.id.swipe_refresh_layout)
+ @BindView(R.id.swipe_refresh_layout)
   SwipeRefreshLayout swipeRefreshLayout;
 
   @BindView(R.id.text_email)
   EditText emailText;
+
+  @BindView(R.id.text_ip)
+  EditText ipText;
 
   @BindView(R.id.textView_response)
   TextView responseTextView;
@@ -41,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
   @OnClick(R.id.button_submit)
   public void onClickSubmitButton() {
     email = emailText.getText().toString();
+    ip =ipText.getText().toString();
+
     if (email.isEmpty())
       Toast.makeText(this, R.string.enter_email, Toast.LENGTH_LONG).show();
     else {
@@ -57,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
   }
 
   public void callHttp() {
-    presenter.loadResponse(email, "192.168.0.183");
+    presenter.loadResponse(email, ip);
   }
 
   private void setupSwipeRefreshLayout() {
@@ -78,6 +84,6 @@ public class MainActivity extends AppCompatActivity {
   }
 
   public void hideResponse() {
-    responseTextView.setVisibility(View.GONE);
+      runOnUiThread(() -> responseTextView.setVisibility(View.GONE));
   }
 }

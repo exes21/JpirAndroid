@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 
 public class WifiManagerUtils {
 
-  public static String getPing(String url) {
+  public String getPing(String url) {
     String str = "";
     try {
       Process process = Runtime.getRuntime().exec("/system/bin/ping -c 4 " + url);
@@ -33,13 +33,13 @@ public class WifiManagerUtils {
   }
 
   @SuppressLint("WifiManagerPotentialLeak")
-  public static int getLinkSpeed(Context context) {
+  public int getLinkSpeed(Context context) {
     WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
     return wifiManager.getConnectionInfo().getRssi();
   }
 
   @SuppressLint("WifiManagerPotentialLeak")
-  public static int getSignLevel(Context context) {
+  public int getSignLevel(Context context) {
     Integer linkSpeed = 0;
     WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
     WifiInfo wifiInfo = wifiManager.getConnectionInfo();

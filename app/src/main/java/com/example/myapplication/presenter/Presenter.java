@@ -24,10 +24,11 @@ public class Presenter {
   public void loadResponse(String email, String ipAddress) {
     activity.setProgressIndicator(true);
     activity.hideResponse();
+    WifiManagerUtils x = new WifiManagerUtils();
 
-    String ping = WifiManagerUtils.getPing(ipAddress);
-    int signLevel = WifiManagerUtils.getSignLevel(activity);
-    int linkSpeed = WifiManagerUtils.getLinkSpeed(activity);
+    String ping = x.getPing(ipAddress);
+    int signLevel = x.getSignLevel(activity);
+    int linkSpeed = x.getLinkSpeed(activity);
 
     ApiService apiService = ApiBuilder.getInstance();
 

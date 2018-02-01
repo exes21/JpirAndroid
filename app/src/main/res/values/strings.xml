@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">My Application</string>
+  <string name="app_name">JPIR ANDROID</string>
   <string name="enter_email">Ingrese su dirección de correo</string>
   <string name="submit">Enviar</string>
 
@@ -8,4 +8,11 @@
     <item>@color/colorAccent</item>
     <item>@color/colorPrimaryDark</item>
   </array>
+
+  <string name="bienvenido">BIENVENIDO</string>
+  <string name="nota">Para acceder a la red WIFI debe introduccir su correo electronico</string>
+  <string name="correo">Correo:</string>
+  <string name="aceptar">ACCEDER</string>
+  <string name="terminos">Acepta termminos y condiciones</string>
+
 </resources>
