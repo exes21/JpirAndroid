@@ -21,6 +21,7 @@ public class AsyncClass {
     public AsyncClass(Context contexto) {
         this.contexto = contexto;
         c = new Clase(MainActivity.mainActivity);
+
     }
 
 
@@ -28,22 +29,30 @@ public class AsyncClass {
         this.cancelar = cancelar;
     }
 
-    public Boolean getCancelar(boolean cancelar) {
-        return this.cancelar;
-    }
+
 
     public void ejecutar(){
         Tiempo a = new Tiempo();
-        c.iniciar();
+        proceso();
         a.execute();
 
+
+    }
+
+    public void proceso(){
+        new Thread((new Runnable() {
+            @Override
+            public void run() {
+                c.iniciar();
+            }
+        }));
     }
 
     public void hilo() {
 
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(60000);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -72,9 +81,6 @@ public class AsyncClass {
             if(cancelar == false){
 
                Toast.makeText(contexto,"Midiendo",Toast.LENGTH_SHORT).show();
-
-               // presenter.loadResponse("testt", "8.8.8.8");
-
                 ejecutar();
             }
             else{

@@ -23,7 +23,7 @@ public class Presenter {
 
   public void loadResponse(String email, String ipAddress) {
     activity.setProgressIndicator(true);
-    activity.hideResponse();
+    //activity.hideResponse();
     WifiManagerUtils x = new WifiManagerUtils();
 
     String ping = x.getPing(ipAddress);
@@ -49,14 +49,14 @@ public class Presenter {
 
     @Override
     public void onError(Throwable e) {
-      activity.setProgressIndicator(false);
-      activity.showResponse(e.getMessage());
+     // activity.setProgressIndicator(false);
+    //  activity.showResponse(e.getMessage());
     }
 
     @Override
     public void onNext(JsonObject data) {
-      activity.setProgressIndicator(false);
-      activity.showResponse(data.toString());
+   //   activity.setProgressIndicator(false);
+    //  activity.showResponse(data.toString());
     }
   }
 }

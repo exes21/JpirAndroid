@@ -57,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    if (email.isEmpty())
-      Toast.makeText(this, R.string.enter_email, Toast.LENGTH_LONG).show();
+    if (email.isEmpty()) {
+        Toast.makeText(this, R.string.enter_email, Toast.LENGTH_LONG).show();
+    }
     else {
         startService(new Intent(thisContext, ServicerRun.class) );
 
@@ -90,10 +91,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-  public void showResponse(String response) {
+  /*public void showResponse(String response) {
     responseTextView.setText(response);
     responseTextView.setVisibility(View.VISIBLE);
-  }
+  }*/
 
   public void hideResponse() {
       runOnUiThread(() -> responseTextView.setVisibility(View.GONE));

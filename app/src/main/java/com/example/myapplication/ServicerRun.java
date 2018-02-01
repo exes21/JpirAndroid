@@ -19,7 +19,7 @@ public class ServicerRun extends Service
 
 
 
-    private AsyncClass a;
+    private AsyncClass a   = new AsyncClass(this);;
 
     public void OnCreate()
     {
@@ -30,7 +30,7 @@ public class ServicerRun extends Service
     public int onStartCommand (Intent intent, int flag, int idProcess) //inicia el servicio
     {
         Toast.makeText(this, "Llamando al serv", Toast.LENGTH_SHORT).show();
-        a = new AsyncClass(this);
+
        a.setCancelar(false);
        a.ejecutar();
 
